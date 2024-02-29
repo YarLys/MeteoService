@@ -36,7 +36,7 @@ public class MeteoService extends Service {
     }
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Thread weather_thread = new Thread(new HttpsRequest(handler));
+        Thread weather_thread = new Thread(new HttpsRequest(handler, intent.getStringExtra("CITY")));
         weather_thread.start();
 
         return START_NOT_STICKY;
